@@ -12,8 +12,3 @@ pactbroker:
   auth:
     token: jNlqXFqiA6__lb8oFfomFA
 
-pact:
-  provider:
-    version: 1
-  verifier:
-    publishResults: true
