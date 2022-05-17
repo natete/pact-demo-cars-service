@@ -46,10 +46,10 @@ jobs:
         run: mvn -B verify --file pom.xml
 
       - run: docker pull pactfoundation/pact-cli:latest
-        if: -d 'target/pacts'
+        if: ([ -d 'target/pacts' ] && echo 1)
 
       - name: Publish pacts
-        if: -d 'target/pacts'
+        if: ([ -d 'target/pacts' ] && echo 1)
         run: docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli publish ${PWD}/target/pacts --consumer-app-version ${{ steps.version.outputs.replaced }}
 
   can-i-deploy:
