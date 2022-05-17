@@ -47,8 +47,8 @@ public class PactProviderTest {
         carsRepository.clear();
     }
 
-    @State("GET /cars/1 -> 200")
-    public void getUserById_OK() {
+    @State("GET /v1/cars/1 -> 200")
+    public void getCarById_OK() {
         carsRepository.save("Seat", "Panda");
     }
 }
