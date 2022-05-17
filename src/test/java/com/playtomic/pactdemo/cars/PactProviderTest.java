@@ -20,7 +20,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@Provider("CarsService")
+@Provider("CarsProvider")
 @PactBroker
 @ActiveProfiles("test")
 public class PactProviderTest {
