@@ -40,6 +40,7 @@ public class PactProviderTest {
     @BeforeEach
     public void setUp(PactVerificationContext context) {
         context.setTarget(new HttpTestTarget("localhost", serverPort));
+        carsRepository.save("Seat", "Panda");
     }
 
     @AfterEach
