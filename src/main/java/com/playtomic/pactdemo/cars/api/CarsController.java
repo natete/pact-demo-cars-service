@@ -18,8 +18,8 @@ public class CarsController {
     }
 
     @GetMapping(path = "/{car_id}")
-    public Car getUser(@PathVariable("car_id") String carId) {
-        return service.getCar(carId);
+    public List<Car> getUser(@PathVariable("car_id") String carId) {
+        return service.getCars(carId);
     }
 
 //    @PostMapping
