@@ -63,7 +63,7 @@ jobs:
           docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli broker can-i-deploy \
           --pacticipant CarsService \
           --version ${{ github.run_number }} \
-          --to-environment dev \
+          --to-environment develop \
           --retry-while-unknown 0 \
           --retry-interval 10
           
