@@ -72,5 +72,5 @@ jobs:
           docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli broker record_deployment \
           --pacticipant CarsService \
           --version ${{ needs.test.outputs.version }} \
-          --environment ${{ github.ref_name } }}
+          --environment ${{ github.ref_name }}
 
