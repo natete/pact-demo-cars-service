@@ -1,9 +1,9 @@
 package com.playtomic.pactdemo.cars.dao;
 
 import com.playtomic.pactdemo.cars.domain.Car;
-import com.playtomic.pactdemo.cars.domain.CarNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,10 +11,9 @@ public class CarsRepository {
 
     private static final List<Car> cars = new ArrayList<>();
 
-    public Car findById(String id) {
+    public List<Car> findAllById(String id) {
         return cars.stream().filter(u -> u.id().equals(id))
-                   .findFirst()
-                   .orElseThrow(CarNotFoundException::new);
+                   .collect(Collectors.toList());
     }
 
     public Car save(String maker, String model) {

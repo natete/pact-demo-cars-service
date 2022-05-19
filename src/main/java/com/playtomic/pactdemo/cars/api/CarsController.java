@@ -2,6 +2,7 @@ package com.playtomic.pactdemo.cars.api;
 
 import com.playtomic.pactdemo.cars.domain.Car;
 import com.playtomic.pactdemo.cars.service.CarsService;
+import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +19,8 @@ public class CarsController {
     }
 
     @GetMapping(path = "/{car_id}")
-    public Car getUser(@PathVariable("car_id") String carId) {
-        return service.getCar(carId);
+    public List<Car> getUser(@PathVariable("car_id") String carId) {
+        return service.getCars(carId);
     }
 
 //    @PostMapping

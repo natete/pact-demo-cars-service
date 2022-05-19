@@ -40,6 +40,7 @@ public class PactProviderTest {
     @BeforeEach
     public void setUp(PactVerificationContext context) {
         context.setTarget(new HttpTestTarget("localhost", serverPort));
+        carsRepository.save("Seat", "Panda");
     }
 
     @AfterEach
@@ -47,8 +48,9 @@ public class PactProviderTest {
         carsRepository.clear();
     }
 
-    @State("GET /cars/1 -> 200")
-    public void getUserById_OK() {
+    @State("GET /v1/cars/1 -> 200")
+    public void getCarById_OK() {
         carsRepository.save("Seat", "Panda");
     }
 }
+
