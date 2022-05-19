@@ -61,7 +61,7 @@ jobs:
       - name: Can I deploy?
         run: |
           docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli broker can-i-deploy \
-          --pacticipant CarService \
+          --pacticipant CarsService \
           --version ${{ needs.test.outputs.version }} \
           --to-environment ${{ github.base_ref }} \
           --retry-while-unknown 0 \
@@ -70,7 +70,7 @@ jobs:
       - name: Record deployment
         run: |
           docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli broker record_deployment \
-          --pacticipant CarService
+          --pacticipant CarsService
           --version ${{steps.version.outputs.replaced}}
           --environment ${{ github.base_ref }}
           
