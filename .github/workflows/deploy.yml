@@ -43,7 +43,7 @@ jobs:
         run: mvn -B clean compile -U --file pom.xml
 
       - name: Verify
-        run: mvn -B verify -Dpact.provider.version=${{ steps.version.outputs.replaced }} -Dpact.verifier.publishResults=true -Dpact.provider.branch=${{ github.base_ref }} --file pom.xml
+        run: mvn -B verify -Dpact.provider.version=${{ steps.version.outputs.replaced }} -Dpact.verifier.publishResults=true -Dpact.provider.branch=${{ github.ref_name }} --file pom.xml
 
       - run: docker pull pactfoundation/pact-cli:latest
         if: hashFiles('target/pacts') != ''
@@ -63,7 +63,7 @@ jobs:
           docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli broker can-i-deploy \
           --pacticipant CarsService \
           --version ${{ needs.test.outputs.version }} \
-          --to-environment ${{ github.base_ref }} \
+          --to-environment ${{ github.ref_name }} \
           --retry-while-unknown 0 \
           --retry-interval 10
 
@@ -72,5 +72,5 @@ jobs:
           docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli broker record_deployment \
           --pacticipant CarsService
           --version ${{steps.version.outputs.replaced}}
-          --environment ${{ github.base_ref }}
+          --environment ${{ github.ref_name }}
           
