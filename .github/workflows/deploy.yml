@@ -73,4 +73,3 @@ jobs:
           --pacticipant CarsService
           --version ${{ needs.test.outputs.version }}
           --environment ${{ github.ref_name } }}
-          
