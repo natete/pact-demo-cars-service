@@ -2,6 +2,7 @@ package com.playtomic.pactdemo.cars;
 
 import au.com.dius.pact.provider.junit5.HttpTestTarget;
 import au.com.dius.pact.provider.junit5.PactVerificationContext;
+import au.com.dius.pact.provider.junitsupport.IgnoreNoPactsToVerify;
 import au.com.dius.pact.provider.junitsupport.Provider;
 import au.com.dius.pact.provider.junitsupport.State;
 import au.com.dius.pact.provider.junitsupport.loader.PactBroker;
@@ -23,6 +24,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @Provider("CarsService")
 @PactBroker
 @ActiveProfiles("test")
+@IgnoreNoPactsToVerify
 public class PactProviderTest {
 
     @LocalServerPort
@@ -41,6 +43,7 @@ public class PactProviderTest {
     public void setUp(PactVerificationContext context) {
         context.setTarget(new HttpTestTarget("localhost", serverPort));
         carsRepository.save("Seat", "Panda");
+        carsRepository.save("Kia", "Rio");
     }
 
     @AfterEach
